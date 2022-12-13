@@ -1,0 +1,33 @@
+
+public class AustraianSignal implements WorldsSignal {
+	
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		AustraianSignal a = new AustraianSignal();
+		a.red();
+		a.green();
+		a.yellow();
+		a.a
+	}
+
+	@Override
+	public void green() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void red() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void yellow() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

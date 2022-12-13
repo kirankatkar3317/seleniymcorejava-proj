@@ -1,0 +1,106 @@
+package framework.kiranakatkar;
+
+import java.time.Duration;
+import java.util.Arrays;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class Myntra1 {
+
+	@SuppressWarnings("unlikely-arg-type")
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+WebDriverManager.chromedriver().setup();
+WebDriver driver = new ChromeDriver();
+driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+JavascriptExecutor js = (JavascriptExecutor)driver;
+String menuItem[] = {"VINYL STICKERS","T-SHIRTS","NUMBER PLATE"};
+
+//String[] stickerList = {"VINYL STICKERS","T-SHIRTS","NUMBER PLATE"};
+
+String[] stickerAddToCart = {"Good","Diesel","Compass"}; 
+
+driver.get("https://modifiedonlinestore.com/");
+driver.findElement(By.cssSelector("i[class='menu-vertical-btn__icon-open mr-lg-5']")).click();	
+wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector("div[class ='menu__item menu__item--has-children position-lg-relative']"))));
+List<WebElement> options =driver.findElements(By.cssSelector("div[class ='menu__item menu__item--has-children position-lg-relative']"));
+
+for(int i=0; i < options.size(); i++ ) {
+	
+	String option = options.get(i).getText();
+	System.out.println(option);
+	List<String> menuit = Arrays.asList(menuItem);
+	System.out.println(menuit);
+	
+	if(menuit.contains(option)) {
+		System.out.println(option);	
+		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector("div[class ='menu__item menu__item--has-children position-lg-relative"))));
+		driver.findElement(By.cssSelector("div[class ='menu__item menu__item--has-children position-lg-relative")).click();
+		
+		break;
+	}
+//	if(option.getText().contains("VINYL")) {
+//		System.out.println(option);
+//		option.click();
+//		break;
+//	}
+	
+	}	
+
+js.executeScript("window.scrollBy(0,150)");	
+
+List<WebElement> stickerListNames = driver.findElements(By.cssSelector("h4 a"));
+
+
+WebElement addbutton = driver.findElement(By.cssSelector("span[class='btn__text']"));
+
+
+List<WebElement> addbuttons = driver.findElements(By.cssSelector("span[class='btn__text']"));
+int j = 0;
+for(int i=0; i< stickerListNames.size(); i++ ) {
+	String[] sticker = stickerListNames.get(i).getText().split(" ");
+	
+	String stickername = sticker[0].trim();
+	System.out.println(stickername);
+	List<String> listContain = Arrays.asList(stickerAddToCart);
+	System.out.println(listContain);
+	if(listContain.contains(stickername)) {
+		System.out.println(addbutton.getText());
+	if(addbutton.getText().contains("Cart")) {	
+	driver.findElements(By.xpath("//div//div//button")).get(i).click();
+	driver.findElement(By.xpath("//div//div//button")).click();
+	
+		driver.findElement(By.xpath("//i[@class='popup-cart__close ml-auto cursor-pointer']//*[name()='svg']")).click();
+	}
+	else {
+	i++;
+	}
+	}
+
+}
+
+//wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//i[@class='popup-cart__close ml-auto cursor-pointer']//*[name()='svg']")));
+js.executeScript("window.scrollBy(0,0)");	
+
+
+
+
+
+	}
+
+	
+	
+	
+	
+	
+}

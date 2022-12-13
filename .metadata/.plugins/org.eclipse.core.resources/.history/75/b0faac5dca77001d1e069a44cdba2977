@@ -1,0 +1,16 @@
+import java.util.ArrayList;
+
+public class Collection {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+ArrayList<String> a = new ArrayList<String>();
+a.add("kk");
+a.add(0,"md");
+a.add("jk");
+a.add("katkar");
+
+a.remove(3);
+	}
+
+}

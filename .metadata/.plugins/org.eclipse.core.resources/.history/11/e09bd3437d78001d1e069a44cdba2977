@@ -1,0 +1,42 @@
+package framework.kiranakatkar;
+
+import java.time.Duration;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class Tripholla {
+
+	@Test
+	public void checkcart() {
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+		driver.get("https://www.thrillophilia.com/");
+
+		driver.findElement(By.xpath("//input[@class='search-wrap__input-bar tt-input']")).sendKeys("Himalayas");
+		driver.findElement(By.cssSelector("button[class='icon-search search-button']")).click();
+		List<WebElement> travelPackages = driver.findElements(By.cssSelector("a.title"));
+		System.out.println(travelPackages.size());
+		
+		
+		for(int i=0; i< travelPackages.size(); i++) {
+			
+			if(travelPackages.contains("Kedarkantha Trek, Uttarakhand")) {
+				String packname = travelPackages.get(i).getText(); 
+				System.out.println(packname);
+			}
+		}
+
+		
+			}
+		}
+		

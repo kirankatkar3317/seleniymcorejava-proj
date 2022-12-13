@@ -1,0 +1,35 @@
+
+public class Staticword {
+//instatntanius variable
+	String city;
+	String name;
+	static String lastname= "katkar"; 
+	
+	public Staticword(String city, String name) {
+		this.city = city;//local variable
+		this.name = name;
+		
+		
+	}
+	
+	public void getData() {
+		
+		System.out.println(city + name + lastname);
+	}
+	
+	
+	
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Staticword sw = new Staticword("mumbai","kiran");
+		Staticword sw1 = new Staticword("ambernath","abhijit");
+		sw1.getData();
+		sw.getData();
+	
+		
+	}
+
+}

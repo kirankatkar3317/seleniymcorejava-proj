@@ -1,0 +1,17 @@
+
+public class Constructorexample {
+
+	
+	public Constructorexample() {
+		
+		System.out.println("im the constructor");
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Constructorexample se = new Constructorexample();
+		
+		
+
+	}
+
+}

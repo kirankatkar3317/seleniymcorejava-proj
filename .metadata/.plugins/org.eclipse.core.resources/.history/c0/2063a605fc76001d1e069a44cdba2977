@@ -1,0 +1,17 @@
+
+public class ChildAircaft {
+
+	
+	public void Engine() {
+		System.out.println("This is the engine");
+	}
+	
+	public void Colour() {
+		
+		System.out.println("this is the colour");
+	}
+	
+	public void GetBody() {
+		System.out.println("this is the body");
+	}
+}
